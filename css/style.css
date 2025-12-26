@@ -1,0 +1,641 @@
+/* 기본 초기화 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0f0f0f; /* 깊이감 있는 블랙 */
+  color: #ffffff;
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+/* 헤더 스타일 */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 25px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  background: rgba(15, 15, 15, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+.header .logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.header nav a {
+  margin-left: 35px;
+  color: #bbb;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.header nav a:hover {
+  color: #ff6b3d;
+}
+
+/* 히어로 섹션 레이아웃 */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8%;
+  overflow: hidden;
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  gap: 80px;
+}
+
+/* 왼쪽 사진 영역 */
+.image-box {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-box img {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 40px;
+  z-index: 2;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* 사진 뒤 후광 효과 */
+.bg-circle {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(255, 107, 61, 0.2) 0%, transparent 70%);
+  z-index: 1;
+}
+
+/* 오른쪽 텍스트 영역 */
+.text-box {
+  flex: 1.2;
+}
+
+.badge {
+  display: inline-block;
+  color: #ff6b3d;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.text-box h1 {
+  font-size: 4.5rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+}
+
+.text-box h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 25px;
+  color: #eee;
+}
+
+.text-box p {
+  color: #999;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+}
+
+/* 버튼 스타일 */
+.btn-group {
+  display: flex;
+  gap: 15px;
+}
+
+.main-btn {
+  padding: 18px 35px;
+  background: #ff6b3d;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.main-btn:hover {
+  background: #e55a2f;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 107, 61, 0.3);
+}
+
+.sub-btn {
+  padding: 14px 36px;
+  border-radius: 30px;
+  border: 1.5px solid #ff6b3d;
+  background: transparent;
+  color: #ff6b3d;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.sub-btn:hover {
+  background: #ff6b3d;
+  color: #000;
+  box-shadow: 0 0 20px rgba(255,107,61,0.4);
+}
+
+
+/* 반응형 모바일 (900px 이하) */
+@media (max-width: 900px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+    margin-top: 80px;
+  }
+
+  .text-box h1 { font-size: 3rem; }
+  .text-box h2 { font-size: 1.4rem; }
+  
+  .image-box img {
+    max-width: 280px;
+  }
+  
+  .btn-group {
+    justify-content: center;
+  }
+}
+
+
+/* --- About Me 섹션 디자인 --- */
+.about {
+  padding: 120px 8%;
+  background: #111;
+  display: flex;
+  justify-content: center;
+}
+
+.about .container {
+  max-width: 1100px;
+  width: 100%;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  color: #ffffff;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 4px;
+  background: #ff6b3d;
+  border-radius: 2px;
+}
+
+.about-text p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #999;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+/* 2행 3열 배치 핵심 코드 */
+.info-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 가로 3개 */
+  gap: 25px;
+}
+
+.info-list li {
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid #222;
+  transition: 0.3s ease;
+}
+
+.info-list li:hover {
+  transform: translateY(-8px);
+  border-color: #ff6b3d;
+  background: #222;
+}
+
+.info-list li i {
+  font-size: 1.5rem;
+  color: #ff6b3d;
+  width: 40px;
+  text-align: center;
+}
+
+.info-list li div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-list li strong {
+  color: #ff6b3d;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.info-list li span {
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+/* 반응형: 화면이 작아지면 2열, 더 작아지면 1열로 변경 */
+@media (max-width: 1024px) {
+  .info-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .info-list { grid-template-columns: 1fr; }
+  .section-title { font-size: 2.2rem; }
+}
+/* --- Skills 섹션 전체 스타일 --- */
+.skills {
+  padding: 100px 8%;
+  background: #0f0f0f;
+}
+
+.skill-category {
+  margin-bottom: 60px;
+}
+
+.skill-category h3 {
+  color: #ff6b3d;
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+  text-align: left;
+  /* 카테고리 제목 옆에 포인트 선 */
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.skill-category h3::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 107, 61, 0.2);
+}
+
+.skills-grid {
+  display: grid;
+  /* 카드가 한 줄에 너무 적지 않게 너비 조정 */
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 20px;
+}
+
+.skill-card {
+  background: #1a1a1a;
+  padding: 25px 15px;
+  border-radius: 18px;
+  border: 1px solid #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-card:hover {
+  transform: translateY(-8px);
+  border-color: #ff6b3d;
+  background: #222;
+  box-shadow: 0 10px 25px rgba(255, 107, 61, 0.1);
+}
+
+.skill-card img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.skill-card img[src*="adobeillustrator"] {
+  filter: invert(64%) sepia(96%) saturate(628%)
+          hue-rotate(2deg) brightness(104%) contrast(101%);
+}
+
+.skill-card img[src*="simple-icons@v11"] {
+  filter: invert(1);
+}
+
+.skill-card img[src*="photoshop"] {
+  filter: brightness(2.2) contrast(1.4) saturate(1.2);
+}
+
+
+
+.skill-card span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #ccc;
+}
+
+.projects {
+  padding: 120px 8%;
+  background: #0f0f0f;
+}
+
+.project-subtitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #ff6b3d;
+}
+
+@media (max-width: 900px) {
+  .project-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-thumb img {
+    height: 200px;
+  }
+}
+
+/* ===== Project Modal ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: #1a1a1a;
+  border-radius: 20px;
+  padding: 40px;
+  width: 90%;
+  max-width: 600px;
+  color: #fff;
+  position: relative;
+}
+
+.modal-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.modal-content ul {
+  margin-bottom: 20px;
+}
+
+.modal-content ul li {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+.modal-content a {
+  color: #ff6b3d;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.project-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background: #1a1a1a;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #222;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,.4);
+}
+
+.project-thumb {
+  height: 400px;           /* 카드 이미지 높이 고정 */
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+}
+
+.project-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top; 
+}
+
+/* 호버 시 살짝 확대 */
+.project-card:hover .project-thumb img {
+  transform: scale(1.05);
+}
+
+.project-body {
+  padding: 24px;
+}
+
+.project-no {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.project-body h4 {
+  margin: 6px 0 10px;
+  font-size: 1.3rem;
+}
+
+.project-desc {
+  color: #aaa;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.project-tags span {
+  background: #2a2a2a;
+  color: #ff6b3d;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.project-date {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.modal-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+/* =========================
+   Awards Section (Upgrade)
+========================= */
+.awards {
+  padding: 120px 0;
+}
+
+.award-card {
+  max-width: 900px;
+  margin: 60px auto 0;
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  background: linear-gradient(145deg, #111, #0d0d0d);
+  border: 1px solid #222;
+  border-radius: 20px;
+  padding: 36px 40px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.award-icon {
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+.award-content h3 {
+  font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.award-date {
+  font-size: 1rem;
+  color: #ff6b3d;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.award-org {
+  font-size: 0.95rem;
+  color: #aaa;
+}
+.award-card {
+  max-width: 900px;
+  margin: 60px auto 0;
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  background: linear-gradient(145deg, #111, #0d0d0d);
+  border: 1px solid #222;
+  border-radius: 20px;
+  padding: 36px 40px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+
+  /* ⭐ 추가 */
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+/* ⭐ Skills 카드랑 같은 느낌 */
+.award-card:hover {
+  border-color: #ff6b3d;          /* 포인트 컬러 */
+  transform: translateY(-6px);    /* 살짝 뜨는 효과 */
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+
+.github-btn {
+  display: inline-block;
+  padding: 16px 38px;
+  border-radius: 14px;
+  border: 1.5px solid #ff6b3d;
+  background: transparent;
+  color: #ff6b3d;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.github-btn:hover {
+  background: #ff6b3d;
+  color: #000;
+  box-shadow: 0 12px 30px rgba(255,107,61,0.35);
+  transform: translateY(-3px);
+}
+.logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logo:hover {
+  color: #ff6b3d; /* 포인트 컬러 */
+}
