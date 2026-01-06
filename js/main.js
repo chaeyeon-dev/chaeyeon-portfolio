@@ -76,6 +76,19 @@ careerfolio: {
   ],
   link: "https://github.com/chaeyeon-dev/careerfolio"
 },
+websocket: {
+  title: "WebSocket 실시간 채팅",
+  image: "images/websocket-chat.png",
+  desc: "WebSocket 기반으로 여러 사용자가 동시에 참여할 수 있는 실시간 채팅 서비스입니다.",
+  info: [
+    "WebSocket 기반 실시간 양방향 통신",
+    "사용자 입장/퇴장 시스템 메시지 처리",
+    "Node.js + ws 라이브러리 서버 구현",
+    "프론트엔드와 백엔드 분리 배포(Render)"
+  ],
+  link: "https://websocket-chat-frontend-7k0x.onrender.com/"
+}
+
 
 };
 // ================================
