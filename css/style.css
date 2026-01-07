@@ -379,6 +379,10 @@ body {
   background: #0f0f0f;
 }
 
+.skill-card img.labview {
+  filter: invert(1);
+}
+
 .project-subtitle {
   font-size: 1.6rem;
   font-weight: 700;
